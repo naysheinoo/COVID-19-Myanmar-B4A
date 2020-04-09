@@ -23,6 +23,8 @@
  - StringUtils
  - WebViewExtras2
   
+ Some libs for this project - https://www.mediafire.com/file/zoylovxrt8tn2iw/Libs_For_COVID19.rar/file
+  
   
 # Unicode
 ကျွန်တော်ကိုယ်တိုင်ရေးသားထားတဲ့ COVID-19 Myanmar Android Application ရဲ့  B4A Project Source Code ပါ။ စိတ်ကြိုက်အသုံးပြုနိုင်ပါတယ်။ လိုအပ်တာတွေရှိရင်လည်း မှတ်ချက်တွေရေးပေးသွားနိုင်ပါတယ်။၁
