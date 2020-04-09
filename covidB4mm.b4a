@@ -1,0 +1,1013 @@
+﻿Build1=Default,com.covid.mm
+File1=datatable.json
+File2=faq.png
+File3=hospital.png
+File4=info.png
+File5=mohs.png
+File6=oursunicode.ttf
+File7=patient.png
+File8=rbc.ttf
+FileGroup1=Default Group
+FileGroup2=Default Group
+FileGroup3=Default Group
+FileGroup4=Default Group
+FileGroup5=Default Group
+FileGroup6=Default Group
+FileGroup7=Default Group
+FileGroup8=Default Group
+Group=Default Group
+IconFile=
+Library1=core
+Library10=javaobject
+Library11=sql
+Library12=appcompat
+Library13=runtimepermissions
+Library14=ultimatelistview
+Library15=firebaseanalytics
+Library16=firebaseadmob
+Library17=webviewextras2
+Library18=firebasenotifications
+Library2=stringutils
+Library3=reflection
+Library4=json
+Library5=b4aphotopager
+Library6=designsupport
+Library7=okhttp
+Library8=okhttputils2
+Library9=phone
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="13" android:targetSdkVersion="28"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~SetApplicationAttribute(android:theme, "@style/MyAppTheme")~\n~'End of default text.~\n~'CreateResourceFromFile(Macro, FirebaseAdMob.FirebaseAds)~\n~'CreateResourceFromFile(Macro, FirebaseAnalytics.GooglePlayBase)~\n~'CreateResourceFromFile(Macro, FirebaseAnalytics.Firebase)~\n~'CreateResourceFromFile(Macro, FirebaseNotifications.FirebaseNotifications)~\n~~\n~'AddApplicationText(~\n~'	<meta-data~\n~'		android:name="com.google.android.gms.ads.APPLICATION_ID"~\n~'		android:value="your-admob-publisher-id"/>~\n~')~\n~~\n~CreateResource(values, theme.xml,~\n~<resources>~\n~    <style name="MyAppTheme" parent="Theme.AppCompat.Light.NoActionBar">~\n~        <item name="colorPrimary">#1a223a</item>~\n~        <item name="colorPrimaryDark">#1a223a</item>~\n~        <item name="colorAccent">#2670f3</item>~\n~        <item name="windowNoTitle">true</item>~\n~        <item name="windowActionBar">false</item>~\n~    </style>~\n~~\n~   <style name="MyAppThemeWithStatusTrans" parent="Theme.AppCompat.Light.NoActionBar">~\n~       <item name="colorPrimary">#2a84f8</item>~\n~        <item name="colorPrimaryDark">#2670f3</item>~\n~        <item name="colorAccent">#2670f3</item>~\n~        <item name="windowNoTitle">true</item>~\n~        <item name="windowActionBar">false</item>~\n~		<item name="android:windowDrawsSystemBarBackgrounds">false</item>~\n~		<item name="android:statusBarColor">@android:color/transparent</item>~\n~		<item name="android:windowTranslucentStatus">true</item>~\n~    </style>~\n~</resources>~\n~)~\n~~\n~~\n~CreateResource(values-v20, theme.xml,~\n~<resources>~\n~  <style~\n~  name="Custom" parent="Theme.AppCompat.Light.NoActionBar">~\n~  	 	<item name="colorPrimary">#00bd78</item>~\n~        <item name="colorPrimaryDark">#00a375</item>~\n~        <item name="colorAccent">#00e083</item>~\n~        <item name="windowNoTitle">true</item>~\n~        <item name="windowActionBar">false</item>~\n~     <item name="android:windowTranslucentNavigation">false</item>~\n~     <item name="android:windowTranslucentStatus">true</item>~\n~  </style>~\n~</resources>~\n~)~\n~~\n~CreateResource(values-v19, theme.xml,~\n~<resources>~\n~  <style~\n~  name="Custom" parent="Theme.AppCompat.Light.NoActionBar">~\n~  	 	<item name="colorPrimary">#00bd78</item>~\n~        <item name="colorPrimaryDark">#00a375</item>~\n~        <item name="colorAccent">#00e083</item>~\n~        <item name="windowNoTitle">true</item>~\n~        <item name="windowActionBar">false</item>~\n~     <item name="android:windowTranslucentNavigation">false</item>~\n~     <item name="android:windowTranslucentStatus">true</item>~\n~  </style>~\n~</resources>~\n~)~\n~~\n~
+Module1=Starter
+Module2=CustomListView
+Module3=nsoCode
+Module4=DBUtils
+Module5=actWeb
+Module6=actAbout
+Module7=FirebaseMessaging
+NumberOfFiles=8
+NumberOfLibraries=18
+NumberOfModules=7
+Version=9.01
+@EndOfDesignText@
+#Region  Project Attributes 
+	#ApplicationLabel: COVID-19 Myanmar
+	#VersionCode: 5
+	#VersionName: 4.1
+	'SupportedOrientations possible values: unspecified, landscape or portrait.
+	#SupportedOrientations: portrait
+	#CanInstallToExternalStorage: False
+	#AdditionalJar:com.android.support:support-v4
+	#Extends: android.support.v7.app.AppCompatActivity
+	#MultiDex : true
+	#ExcludeClasses: .games, .drive,  .fitness, .wearable, .cast, .auth, .nearby
+	#ExcludeClasses: .tagmanager, .wallet, .plus, .vision, .gcm, .maps
+#End Region
+
+#Region  Activity Attributes 
+	#FullScreen: False
+	#IncludeTitle: True
+#End Region
+
+Sub Process_Globals
+	'These global variables will be declared once when the application starts.
+	'These variables can be accessed from all modules.
+	Dim con As Typeface = Typeface.LoadFromAssets("rbc.ttf")
+	Dim mm As Typeface = Typeface.LoadFromAssets("oursunicode.ttf")
+	Dim sql As SQL
+	Dim bgColorPrimary As Int = 0xff252e47
+	Dim bgColorSecondary As Int
+	Dim textColorPrimary As Int
+	Dim textColorSecondary As Int
+	Dim divColorPrimary As Int
+End Sub
+
+Sub Globals
+	'These global variables will be redeclared each time the activity is created.
+	'These variables can only be accessed from this module.
+	
+	Dim cs As CSBuilder
+	
+	
+	' ■ Myanmar Page And Global Page
+	Dim clvMM, clvGB As CustomListView
+	Dim pager As PhotoPager
+	Dim tabs As DSTabLayout
+	
+	' ■ Title Label Vairable
+	Dim lblTitle As Label
+	
+	
+		
+	' ■ Countries Page Variable
+	Dim ulv As UltimateListView
+	Dim cur As Cursor
+	Dim width(4) As Int = Array As Int ( 40%x, 20%x, 20%x, 20%x)
+	Dim cellHeight As Int = 45dip
+	Dim found As Int = -1
+	
+	
+	' ■ Admob Vairable
+	Dim ad As AdView
+	
+	
+	
+	' ■ Update Version
+	Dim banbei As Int = 6
+
+	
+
+
+End Sub
+
+Sub Activity_Create(FirstTime As Boolean)
+	'Do not forget to load the layout file created with the visual designer. For example:
+	'Activity.LoadLayout("Layout1")
+	
+	
+	
+	' ■ Theme ပြောင်းရန်နေရာ - Dark And Light
+	Dim isDark As Boolean = True
+	If isDark Then
+		bgColorPrimary  =  0xff252e47
+		bgColorSecondary = 0x33000000
+		textColorPrimary = Colors.White
+		textColorSecondary = Colors.ARGB(200, 255,255,255)
+		divColorPrimary = Colors.ARGB(50,0,0,0)
+	Else
+		bgColorPrimary  =  0xfffefefe
+		bgColorSecondary = Colors.White
+		textColorPrimary = 0xff222222
+		textColorSecondary = Colors.DarkGray
+		divColorPrimary = Colors.ARGB(10,0,0,0)
+	End If
+
+	
+	
+	
+	' ■ Sqlite Database
+	If FirstTime Then
+		sql.Initialize( File.DirInternal, "data.db", True )
+	End If
+	
+	
+	Activity.Color = bgColorPrimary
+	nsoCode.SetStatusBarColor(0xff1a223a)
+	
+	
+	
+	' ■ TITLE
+	lblTitle.Initialize("")
+	lblTitle.Text = "COVID-19 Myanmar"
+	lblTitle.Gravity = Gravity.CENTER_VERTICAL + Gravity.LEFT
+	lblTitle.Typeface = con
+	lblTitle.Color = 0xff1a223a
+	lblTitle.TextColor = Colors.White
+	lblTitle.Padding = Array As Int ( 20dip, 0, 0, 0)
+	Activity.AddView ( lblTitle, 0, 0, 100%x, 50dip )
+	
+	
+	
+	' ■ Main Pager
+	pager.Initialize("pager", True) : 	pager.Transition= pager.Transition.ZoomOutSlide : 	Activity.AddView( pager, 0, 50dip, 100%x, 100%y - ( nsoCode.adHeight + 50dip ))
+	
+	
+	
+	' ■ Pager Add Page
+	pager.AddView(mmPage)  		'Myanmar Page
+	pager.AddView(globalPage)		'Global Page
+	pager.AddView(testPanel)	    'Country Page
+	
+	
+	' ■ Tabs for Pager
+	tabs.Initialize("")
+	tabs.SetViewPager(pager)
+	tabs.Color = 0xff1a223a
+	tabs.SetTabTextColors( 0x55fcfcfd, 0xfffcfcfd)
+	tabs.TabIndicatorColor = 0x99ffffff
+	tabs.TabIndicatorHeight = 2dip
+	tabs.TabGravity = tabs.GRAVITY_CENTER
+	tabs.TabMode = tabs.MODE_SCROLLABLE
+	Activity.AddView( tabs, 50%x, 0dip , 50%x, 50dip )
+	
+	
+	
+	' ■ Tab Name 
+	cs.Initialize : 	cs.Size(12).Typeface(con).Append("MYANMAR").PopAll 	: 		tabs.SetTabText( 0, cs)
+	cs.Initialize : 	cs.Size(12).Typeface(con).Append("GLOBAL").PopAll		:		tabs.SetTabText(1, cs)
+	cs.Initialize :  	cs.Size(12).Typeface(con).Append("COUNTRIES").PopAll	: 		tabs.SetTabText(2, cs)
+	
+	
+	
+	' ■ Admob here
+'	ad.Initialize2("ad", "your-admob-id", ad.SIZE_SMART_BANNER) '
+'	ad.LoadAd : Activity.AddView( ad, 0,100%y - nsoCode.adHeight ,100%x, nsoCode.adHeight)
+
+	
+	
+	' ■ Checking Update
+	checkUpdate
+	
+	
+End Sub
+
+#Region ■■■ Activty Region and Pager Region ■■■ 
+
+Sub Activity_Resume
+	ad.Resume
+End Sub
+
+Sub Activity_Pause (UserClosed As Boolean)
+	ad.Pause
+End Sub
+
+Sub pager_PageSelected(Position As Int)
+	Select Position
+		Case 1 :    lblTitle.Text = "COVID-19 Global"
+		Case 0 : 	lblTitle.Text = "COVID-19 Myanmar"
+		Case 2 :		lblTitle.Text = "COVID-19 by Countries"
+	End Select
+End Sub
+#End Region
+
+
+#Region ■■■ Countires Region ■■■ 
+
+' ■ Panel For Pager - Countires
+Sub testPanel As Panel
+	
+	Private p As Panel
+	p.Initialize("")
+	p.Color = bgColorPrimary
+	
+	
+	' ■ Countries Search Edittext
+	Dim c As ColorDrawable
+	c.Initialize( 0xff1a223a , 5dip )
+	
+	Private inpSearch As ACEditText
+	inpSearch.Initialize("inpsearch")
+	inpSearch.Typeface = mm
+	inpSearch.TextSize = 11
+	inpSearch.SingleLine = True
+	inpSearch.Background =c
+	inpSearch.TextColor = Colors.White
+	inpSearch.Hint ="နိုင်ငံအမည်ဖြင့်ရိုက်ထည့်ရှာရန်"'
+	inpSearch.HintColor = 0xfffdfdfc
+	inpSearch.Padding = Array As Int ( 50dip, 0,15dip, 0 )
+	p.AddView( inpSearch, 10dip , 10dip, 100%x - 20dip , 50dip  )
+	
+	
+	' ■ Search Label
+	Private lblSearch As Label
+	lblSearch.Initialize("")
+	lblSearch.Typeface = Typeface.FONTAWESOME
+	lblSearch.Text = Chr(0xF002)
+	lblSearch.TextColor = 0xfffcfcfd
+	lblSearch.TextSize = 18
+	lblSearch.Gravity = Gravity.CENTER
+	p.AddView( lblSearch, 10dip, 10dip, 50dip, 50dip )
+	
+	
+	Private lblSort As Label
+	lblSort.Initialize("lblSort")
+	lblSort.Typeface = Typeface.FONTAWESOME
+	lblSort.Text = Chr(0xF0DC)
+	lblSort.TextColor = 0xfffcfcfd
+	lblSort.TextSize = 18
+	lblSort.Gravity = Gravity.CENTER
+	p.AddView( lblSort, 100%x - 60dip    , 10dip  , 50dip, 50dip )
+	
+	
+	' ■ Countries Table Header
+	Dim pnlheader As Panel, lbl(4) As Label
+	pnlheader.Initialize("")
+	pnlheader.Color = Colors.Black
+	Dim leftpost As Int
+	For i = 0 To 3
+		lbl(i).Initialize("")
+		lbl(i).TextSize = 11
+		lbl(i).Typeface = mm
+		lbl(i).TextColor = 0xfffcfcfd
+		lbl(i).Gravity = Gravity.CENTER 
+		
+		Select (i)
+			Case 0 : lbl(i).text ="နိုင်ငံ" : lbl(i).Gravity = Gravity.Left + Gravity.CENTER_VERTICAL : lbl(i).Padding = Array As Int ( 15dip, 0,0,0) : lbl(i).Color = 0xff1a223a
+			Case 1 : lbl(i).text = "ကူးစက်" : lbl(i).TextColor = 0xffffa232 : lbl(i).Gravity = Gravity.RIGHT + Gravity.CENTER_VERTICAL : lbl(i).Padding = Array As Int ( 3dip, 0, 9dip, 0) : lbl(i).Color = 0xff1a223a
+			Case 2 : lbl(i).text = "သေဆုံး" : lbl(i).TextColor = 0xffff5570 : lbl(i).Gravity = Gravity.RIGHT + Gravity.CENTER_VERTICAL : lbl(i).Padding = Array As Int ( 3dip, 0, 9dip, 0) : lbl(i).Color = 0xff1a223a
+			Case 3 : lbl(i).text = "ကောင်းမွန်" : lbl(i).TextColor = 0xff1ac679 : lbl(i).Gravity = Gravity.RIGHT + Gravity.CENTER_VERTICAL : lbl(i).Padding = Array As Int ( 3dip, 0, 9dip, 0) : lbl(i).Color = 0xff1a223a
+		End Select
+		lbl(i).Tag = i
+		pnlheader.AddView( lbl(i), leftpost , 0 , width(i) - 1, 50dip )
+		leftpost = leftpost + width(i)
+	Next
+	p.AddView( pnlheader, 0, 70dip, 100%x, 50dip )
+	pnlheader.Elevation = 1dip
+	
+	
+	
+	' ■ Utlimate List View
+	ulv.Initialize(0,0,"","ulv")
+	ulv.DividerHeight = 1
+	ulv.Color = 0xfffafafb
+	ulv.SetStyle(ulv.STYLE_MATERIAL_LIGHT2)
+	ulv.FadingEdges(False)
+	p.AddView( ulv, 0, 120dip, 100%x, 100%y - 220dip )
+	
+	
+	
+	' ■ Add Row to Ultimate View = Data Row
+	ulv.AddRowLayout("DATA", "data_RowLayoutCreator", "data_RowContentFiller", cellHeight, width.Length, width,  1dip , 0xfff7f7f8, True  )
+	
+	Return p
+	
+End Sub
+
+
+' ■ Sort function event
+Sub lblSort_Click
+	 Dim sortList As List
+	 sortList.Initialize
+	 sortList.Add("By Confirmed")
+	 sortList.Add("By Deaths")
+	 sortList.Add("By new Cases")
+	 sortList.Add("By new Deaths")
+
+	InputListAsync(sortList, "Sort by", -1 , True)
+	Wait For InputList_Result (Index As Int)
+	Select Index
+	 	Case 0
+			ulv.ClearContent
+			cur = sql.ExecQuery("SELECT * FROM data ORDER BY CAST( totalcases AS INTEGER ) DESC")
+			For i = 0 To cur.RowCount - 1
+				cur.Position = i			
+				ulv.AddItem("DATA", cur.GetInt("id"))
+			Next
+			
+		Case 1
+			ulv.ClearContent
+			cur = sql.ExecQuery("SELECT * FROM data ORDER BY CAST( totaldeaths AS INTEGER ) DESC")
+			For i = 0 To cur.RowCount - 1
+				cur.Position = i
+				ulv.AddItem("DATA", cur.GetInt("id"))
+			Next
+			
+		Case 2
+			ulv.ClearContent
+			cur = sql.ExecQuery("SELECT * FROM data ORDER BY CAST( newcases AS INTEGER ) DESC")
+			For i = 0 To cur.RowCount - 1
+				cur.Position = i
+				ulv.AddItem("DATA", cur.GetInt("id"))
+			Next
+			
+		Case 3
+			ulv.ClearContent
+			cur = sql.ExecQuery("SELECT * FROM data ORDER BY CAST( newdeaths AS INTEGER ) DESC")
+			For i = 0 To cur.RowCount - 1
+				cur.Position = i
+				ulv.AddItem("DATA", cur.GetInt("id"))
+			Next
+	End Select
+	 
+End Sub
+
+Sub data_RowContentFiller(RowID As Long, LayoutName As String, CellPanel As Panel, CellIndex As Byte, Position As Int)
+	
+	If Position = found  Then
+		CellPanel.Color =  0x22000000
+	Else
+		CellPanel.Color = 0xfffcfcfd
+	End If
+	
+	
+	If cur.GetString("newcases") <> "" Or cur.GetString("newdeaths") <> "" Then
+		cellHeight = 60dip
+	Else
+		cellHeight = 45dip
+	End If
+	
+	Dim lbl As Label = CellPanel.GetView(0)
+	Select CellIndex
+		Case 0
+			cur.Position = Position
+			lbl.Text = cur.GetString("country")
+			lbl.TextColor = 0xff222222
+			lbl.Typeface = con
+			lbl.TextSize = 13
+			lbl.Gravity = Gravity.CENTER_VERTICAL + Gravity.LEFT
+			lbl.Padding = Array As Int ( 15dip, 0,0,0)
+			
+		Case 1
+			If cur.GetString("newcases") <> "" Then
+				cs.Initialize
+				cs.Append(cur.GetString("totalcases")).Size(10).Color(0xffffa232).Append(CRLF & "+" & cur.GetString("newcases")).PopAll
+				lbl.Text = cs
+				CellPanel.Color = 0x07ffa232
+			Else
+				lbl.Text = cur.GetString("totalcases")
+			End If
+			lbl.TextColor = 0xff444444'0xffffa232
+			lbl.Typeface =Typeface.DEFAULT_BOLD
+			lbl.Gravity = Gravity.RIGHT + Gravity.CENTER_VERTICAL
+			lbl.Padding  = Array As Int( 3dip, 0, 9dip, 0)
+			
+		Case 2
+			If cur.GetString("newdeaths") <> "" Then
+				cs.Initialize
+				cs.Append(cur.GetString("totaldeaths")).Size(10).Color(0xffff5570).Append(CRLF & "+" & cur.GetString("newdeaths")).PopAll
+				lbl.Text = cs
+				CellPanel.Color = 0x07ff5570
+			Else
+				lbl.Text = cur.GetString("totaldeaths")
+			End If
+
+			lbl.TextColor = 0xff444444'0xffff5570
+			lbl.Typeface = Typeface.DEFAULT_BOLD
+			lbl.Gravity = Gravity.RIGHT + Gravity.CENTER_VERTICAL
+			lbl.Padding  = Array As Int ( 3dip, 0, 9dip, 0)
+			
+		Case 3
+			lbl.Text = cur.GetString("totalrecovered")
+			lbl.TextColor = 0xff444444'0xff1ac679
+			lbl.Typeface = Typeface.DEFAULT_BOLD
+			lbl.Gravity = Gravity.RIGHT + Gravity.CENTER_VERTICAL
+			lbl.Padding  = Array As Int ( 3dip, 0, 9dip, 0)
+	
+	End Select
+	
+	CellPanel.Height = cellHeight
+	
+	
+End Sub
+
+Sub data_RowLayoutCreator(LayoutName As String, CellPanel As Panel, CellIndex As Byte)
+	Dim lbl As Label
+	lbl.Initialize("")
+	lbl.TextSize = 12
+	lbl.Gravity = Gravity.CENTER
+	CellPanel.AddView( lbl, 0, 0, CellPanel.Width, CellPanel.Height - 1)
+End Sub
+
+
+Sub getCountires
+	
+	Dim j As HttpJob
+	j.Initialize("", Me)
+	j.Download("https://covid19.joymogok.com/gbdata.json") ' ■ Country data link
+	Wait For (j) JobDone ( j As HttpJob )
+	If j.Success Then
+		
+		Try
+			nsoCode.createTableAndInsertData(j.GetString)
+			If nsoCode.tot.Size <> 0 Then
+				addExtraItemToGB(nsoCode.tot )
+			End If
+			
+			Private cur As Cursor = sql.ExecQuery("SELECT * FROM data ORDER BY CAST( totalcases AS INTEGER ) DESC")
+			For i = 0 To cur.RowCount - 1
+				cur.Position = i
+				ulv.AddItem("DATA", cur.GetInt("id"))
+			Next
+		Catch
+			Msgbox2Async(LastException, "Error occured !", "", "", "", Null, True )
+		End Try
+	Else
+		ToastMessageShow("Network Error ! please check your internet connection", False)
+	End If
+End Sub
+
+Sub inpsearch_TextChanged (Old As String, New As String)
+	Dim toSearch As String = New.Trim
+	If toSearch = "" Then
+		found = -1
+		ulv.RefreshContent
+		Return
+	End If
+	
+	Dim res As Cursor
+	res = sql.ExecQuery("SELECT id FROM data WHERE country LIKE ""%" & toSearch & "%"" ORDER BY country")
+	
+	If res.RowCount > 0 Then
+		res.Position = 0
+		found = ulv.GetPositionForID( res.GetLong("id"), False)
+	Else
+		found = -1
+	End If
+	
+	ulv.RefreshContent
+	If found > -1 Then ulv.PlaceItemFromTop(found, 5dip )
+		
+End Sub
+
+
+
+#End Region
+
+
+#Region ■■■ Myanmar Region ■■■ 
+
+Sub mmPage As Panel
+	Dim pbase As Panel
+	pbase.Initialize("")
+	pbase.Color = 0xfffcfcfd
+	
+	clvMM.Initialize(Me, "clvMM")
+	clvMM.AsView.Color = bgColorPrimary
+	pbase.AddView( clvMM.AsView, 0, 0, 100%x , 100%y - 100dip )
+	
+	getMMData
+		
+	
+	
+	Return pbase
+End Sub
+
+Sub clvMM_ItemClick (Index As Int, Value As Object)
+	Select Value
+		Case "hospital"
+			actWeb.title = "မြို့နယ်ဆေးရုံတစ်ခုစီအတွက် အချက်အလက်များ"
+			actWeb.urls = "https://covid19.joymogok.com/page/mmhospital.html"
+			actWeb.isCleanCache = False
+			StartActivity(actWeb)
+		Case  "patient"
+			actWeb.title = "MOHS မှ ပိုးတွေ့လူနာများစာရင်း"
+			actWeb.urls = "https://covid19.joymogok.com/page/mmconfirmcases.html"
+			actWeb.isCleanCache = False
+			StartActivity(actWeb)
+		Case "mohs"
+			Msgbox2Async("Open MOHS official page ?","", "OPEN", "NO", "", Null, True )
+			Wait For Msgbox_Result (Result As Int)
+			If Result = DialogResponse.POSITIVE Then
+				Dim mohs As PhoneIntents
+				StartActivity(mohs.OpenBrowser("http://mohs.gov.mm/Main/content/publication/2019-ncov"))
+			End If
+		Case "info"
+			StartActivity(actAbout)
+		Case "faq"
+			actWeb.title = "COVID19 နှင့်ပါတ်သက်ပြီး မေးခွန်းနှင့်အဖြေများ"
+			actWeb.urls = "https://covid19.joymogok.com/page/mmfaq.html"
+			actWeb.isCleanCache = False
+			StartActivity(actWeb)
+			
+	End Select
+End Sub
+
+Sub getMMData
+	
+	Dim j As HttpJob
+	j.Initialize("", Me)
+	j.Download("https://covid19.joymogok.com/mm.json")
+	Wait For (j) JobDone ( j As HttpJob )
+	If j.Success Then
+		clvMM.Clear
+		Try
+			
+
+		Dim parser As JSONParser
+		parser.Initialize(j.GetString)
+		Dim root As Map = parser.NextObject
+		Dim confirm As Int = root.Get("confirm")
+		Dim total As Int = root.Get("total")
+		Dim lab_negative As Int = root.Get("lab_negative")
+		Dim lab_pending As Int = root.Get("lab_pending")
+		Dim pui As Int = root.Get("pui")
+		Dim suspected As Int = root.Get("suspected")
+		Dim discharge As Int = root.Get("discharge")
+		Dim quarantine As String = root.Get("quarantine")
+		Dim deaths As String = root.Get("deaths")
+		Dim recovered As String = root.Get("recovered")
+		
+		clvMM.Add(mmTimeItem, 80dip, 0)
+		clvMM.Add(mmTopItem( confirm, deaths, recovered, 120dip), 120dip, "top")
+		
+		Dim l As List
+		l.Initialize
+		If quarantine <> "-" Then
+			l.Add("Quarantine-Quarantine-" & quarantine )
+		End If
+	
+		l.Add("စောင့်ကြည့် + သံသယ-PUI and Suspected-" & total)
+		l.Add("စောင့်ကြည့်-Person Under Investigation (PUI)-" & pui )
+		l.Add("သံသယ-Suspected-" & suspected )
+		l.Add("ပိုးမတွေ့လူနာ-Laboratory Result Negative-" & lab_negative)
+		l.Add("ဓာတ်ခွဲအဖြေစောင့်ဆိုင်းဆဲ-Laboratory Result Pending-" & lab_pending )
+		l.Add("ဆေးရုံမှဆင်းပြီး-Discharge from Hospital-" & discharge )
+		
+		
+		'clvMM.Add(mmHorizontal(l), 100dip, 1)
+		
+		clvMM.Add(mmseperator,7dip, 0)
+		
+		
+		clvMM.Add(mmItem("မြို့နယ်ဆေးရုံတစ်ခုစီအတွက် အချက်အလက်များ-hospital" , "",  70dip ), 70dip, "hospital")
+		clvMM.Add(mmItem("MOHS မှ ပိုးတွေ့လူနာများစာရင်း-patient", "",  70dip), 70dip, "patient")
+		clvMM.Add(mmItem("COVID19 နှင့်ပါတ်သက်ပြီး မေးခွန်းနှင့်အဖြေများ-faq" , "",  70dip ),70dip, "faq")
+		clvMM.Add(mmItem("Ministry of Health and Sport website-mohs" , "",  70dip ), 70dip, "mohs")
+		clvMM.Add(mmItem("About this app-info" , "",  70dip ), 70dip, "info")
+
+		
+		Catch
+			Msgbox2Async(LastException, "Error occured !", "", "","", Null, True)
+		End Try
+		
+	Else
+		ToastMessageShow("Network Error ! please check your internet connection", False)
+	End If
+	j.Release
+	getGBData
+End Sub
+
+' ျမန္မာႏိုင္ငံအတြက္ ကူးစက္၊ ေသဆံုး၊ ေကာင္းမြန္ အခ်က္အလက္မ်ား Custom List View တြင္ ေဖာ္ျပရန္
+Sub mmTopItem ( confirm As String, death As String, recover As String, height As Int ) As Panel ' 90dip
+		Private pbase As Panel
+		pbase.Initialize("")
+		pbase.Color = bgColorPrimary
+		Private lblWidth As Int = 100%x / 3
+
+		
+		Private lbl1,lbl2,lbl3 As Label
+		
+		lbl1.Initialize("")
+		lbl1.Color = bgColorPrimary
+
+		
+		cs.Initialize
+		cs.Size(setFontSize(confirm)).Color(0xffffa232 ).Typeface(Typeface.DEFAULT_BOLD).Append(confirm).Pop.Pop.Pop
+		cs.Size(10).VerticalAlign(3dip).Color(0xffffa232).Typeface(mm).Append(CRLF & "ပိုးတွေ့လူနာ").Pop.Pop.Pop.Size(10).Typeface(con).Color(textColorSecondary).Append(CRLF & "Total Confirmed").PopAll
+		lbl1.Text = cs
+		lbl1.Gravity = Gravity.CENTER
+		pbase.AddView( lbl1, 0, 0, lblWidth, 	height )
+		
+		
+		lbl2.Initialize("")
+		lbl2.Color = bgColorPrimary
+		cs.Initialize
+		cs.Size(setFontSize(death)).Color(0xffff5570 ).Typeface(Typeface.DEFAULT_BOLD).Append(death).Pop.Pop.Pop
+		cs.Size(10).VerticalAlign(3dip).Color(0xffff5570).Typeface(mm).Append(CRLF & "သေဆုံး").Pop.Pop.Pop.Size(10).Typeface(con).Color(textColorSecondary).Append(CRLF & "Total Deaths").PopAll
+		lbl2.Text = cs
+		lbl2.Gravity = Gravity.CENTER
+		pbase.AddView( lbl2, lblWidth, 0, lblWidth, height)
+		
+		
+		lbl3.Initialize("")
+		lbl3.Color = bgColorPrimary
+		cs.Initialize
+		cs.Size(setFontSize(recover)).Color(0xff1ac679 ).Typeface(Typeface.DEFAULT_BOLD).Append(recover).Pop.Pop.Pop
+		cs.Size(10).VerticalAlign(3dip).Color(0xff1ac679).Typeface(mm).Append(CRLF & "ကောင်းမွန်").Pop.Pop.Pop.Size(10).Typeface(con).Color(textColorSecondary).Append(CRLF & "Total Recovered").PopAll
+		lbl3.Text = cs
+		lbl3.Gravity = Gravity.CENTER
+		pbase.AddView( lbl3, lblWidth * 2, 0, lblWidth, height)
+		
+		
+		Private pdiv As Panel
+		pdiv.Initialize("")
+		pdiv.Color = divColorPrimary
+		pbase.AddView( pdiv, 20dip, height - 1, 100%x - 40dip,  1)
+		
+		Private vDiv,vDiv2 As Panel
+		vDiv.Initialize("")
+		vDiv.Color = divColorPrimary
+		pbase.AddView( vDiv, lblWidth, 20dip, 1, height - 40dip )
+		
+		vDiv2.Initialize("")
+		vDiv2.Color = divColorPrimary
+		pbase.AddView( vDiv2, lblWidth * 2 , 20dip, 1 , height - 40dip )
+		Return pbase
+End Sub
+
+Sub setFontSize ( c As String ) As Int
+	If c.Length > 5 Then
+		Return 18
+	Else
+		Return 25
+	End If
+End Sub
+
+Sub mmseperator As Panel
+	 Private p As Panel
+	 p.Initialize("")
+	 p.Color = Colors.ARGB(20, 0,0,0)
+	 Dim pb As Panel
+	 pb.Initialize("")
+	pb.Color = bgColorPrimary
+	 p.AddView( pb,0, 0, 100%x, 40dip )
+	 Return p
+End Sub
+
+Sub mmTimeItem  As Panel
+	Private pbase As Panel
+	pbase.Initialize("")
+	pbase.Color = 0xfffcfcfd
+	
+	Private lblTime As Label
+	lblTime.Initialize("")
+	cs.Initialize
+
+	cs.Size(10).Typeface(mm).Append("မြန်မာနိုင်ငံ COVID-19 နှင့်ပါတ်သက်ပြီး " & CRLF &   "MOHS နှင့် Worldometers မှ " &  DateTime.Date(DateTime.Now) &  " တွင် ရရှိထားသော" & CRLF & "အချက်အလက်များဖြစ်ပါသည်။").PopAll
+	lblTime.Text = cs
+	lblTime.Color = bgColorPrimary
+	lblTime.Gravity = Gravity.CENTER_HORIZONTAL + Gravity.BOTTOM
+	lblTime.TextColor = textColorPrimary
+	lblTime.Padding = Array As Int ( 0,0,0,0)
+	pbase.AddView( lblTime, 0, 0, 100%x , 80dip )	
+	Return pbase
+End Sub
+
+'Sub mmHorizontal ( l As List ) As Panel
+'	Private pbase As Panel
+'	pbase.Initialize("")
+'	pbase.Color = Colors.ARGB(10, 0,0,0)
+'	Private lblWidth As Int = 100%x / 3
+'	
+'	Dim hor As HorizontalSlaveView
+'	hor.Initialize(1000dip )
+'	hor.Panel.Color = Colors.White'0xff1a223a'0x302670f3'0x302670f3
+'	
+'	For i = 0 To l.Size  - 1
+'		Dim pp As Panel
+'		pp.Initialize("")
+'		pp.Color = Colors.Transparent
+'		hor.Panel.AddView( pp, lblWidth * i, 0, lblWidth, 100dip )
+'		
+'		cs.Initialize
+'		Private st() As String
+'		st = Regex.Split("-",l.Get(i))
+'		cs.Initialize
+'		
+'		cs.Size(11).Typeface(mm).Append(st(0) & CRLF).Pop.Pop'.Size(10).Typeface(con).VerticalAlign(1dip).Color(Colors.Gray).Append(CRLF & st(1)).PopAll
+'		cs.Size(14).Typeface(Typeface.DEFAULT_BOLD).Color(0xff1a223a).Append(st(2)).PopAll
+'		Dim lbl As Label
+'		lbl.Initialize("")
+'		lbl.Text = cs
+'		Private c As ColorDrawable
+'		c.Initialize( 0x111a223a, 8dip) '0xfffcfcfd
+'		lbl.Background = c
+'		lbl.Gravity =Gravity.CENTER
+'		lbl.Padding = Array As Int ( 5dip, 0, 5dip, 0 )
+'		pp.AddView( lbl, 10dip, 10dip, pp.Width - 10dip, pp.Height - 20dip )
+'	Next
+'	hor.Panel.Width = lblWidth * l.Size + 10dip
+'	pbase.AddView( hor, 0, 0dip, 100%x, 100dip )
+'
+'	
+'	Return pbase 
+'	
+'End Sub
+
+Sub mmItem ( title As String, count As String, height As Int) As Panel ' 60dip
+	Private pbase As Panel
+	pbase.Initialize("")
+	Private pcol As Panel
+	pcol.Initialize("")
+	pcol.Color = bgColorPrimary'Colors.ARGB(5,0,0,0)
+	pbase.AddView( pcol, 0, 0, 100%x, height )
+	
+	Private pp As Panel
+	pp.Initialize("")
+	Private c As ColorDrawable
+	c.Initialize(bgColorSecondary ,5dip ) ' bgColorPrimary
+	pp.Background = c
+	pp.Elevation = 2dip
+	pbase.AddView( pp, 15dip, 5dip, 100%x - 30dip, 60dip )
+	
+	
+	
+	cs.Initialize
+	Private st() As String
+	st = Regex.Split("-", title)
+	cs.Initialize
+	cs.Size(11).Typeface(mm).Append( st(0)).PopAll
+	Private lbl1 As Label
+	lbl1.Initialize("")
+	lbl1.Tag = count
+	lbl1.TextColor = textColorSecondary
+
+	lbl1.Gravity = Gravity.LEFT + Gravity.CENTER_VERTICAL
+	lbl1.Text = cs
+	lbl1.Padding = Array As Int (13dip, 0, 0, 0 )
+	
+	pp.AddView( lbl1, 50dip , 0,  100%x, 60dip )
+	
+	Private imgIcon As ImageView
+	imgIcon.Initialize("")
+	imgIcon.Bitmap = LoadBitmap(File.DirAssets, st(1) &".png")
+	imgIcon.Gravity = Gravity.FILL
+	pp.AddView( imgIcon , 15dip, 12dip, 60dip - 24dip, 60dip - 24dip )
+	
+	
+	
+	Return pbase
+End Sub
+#End Region
+
+
+#Region ■■■ Global Region ■■■ 
+Sub globalPage As Panel
+	Private pbase As Panel
+	pbase.Initialize("")
+	pbase.Color = bgColorPrimary'Colors.White
+	
+	clvGB.Initialize(Me, "clvGB")
+	clvGB.AsView.Color = bgColorPrimary'Colors.White
+	pbase.AddView( clvGB.AsView, 0, 0 , 100%x, 100%y - 100dip )
+	
+	'getGBData
+	
+	Return pbase
+	
+End Sub
+
+Sub getGBData
+	
+	Dim j As HttpJob
+	j.Initialize("", Me)
+	j.Download( "https://covid19.joymogok.com/total.json")
+	Wait For (j) JobDone (j As HttpJob )
+	If j.Success Then
+		clvGB.Clear
+		Try
+			Dim parser As JSONParser
+			parser.Initialize(j.GetString)
+			Dim root As Map = parser.NextObject
+			Dim recovered As String = root.Get("recovered")
+		'	Dim active As String = root.Get("active")
+		'	Dim closed As String = root.Get("closed")
+			Dim time As String = root.Get("time")
+			Dim confirmed As String = root.Get("confirmed")
+			Dim deaths As String = root.Get("deaths")
+		
+			clvGB.Add(gbTimeItem( time), 30dip, 0)
+			clvGB.Add( gbItem("ကူးစက်ခံရသူစုစုပေါင်း-Total Confirmed", confirmed, 0xffffa232), 120dip, 0)
+			clvGB.Add( gbItem("သေဆုံးသူစုစုပေါင်း-Total Deaths", deaths, 0xffff5570), 120dip, 0)
+			clvGB.Add( gbItem("ပြန်လည်ကောင်းမွန်လာသူစုစုပေါင်း-Total Recovered",recovered, 0xff1ac679), 120dip, 0)
+			clvGB.Add(gbdivider, 5dip, 0)
+		
+		
+			
+		Catch
+			Msgbox2Async(LastException, "Error occured !!", "", "", "", Null, True )
+		End Try
+	Else
+		ToastMessageShow("Network Error ! please check your internet connection", False)
+	End If
+	j.Release
+	getCountires
+End Sub
+
+Sub gbItem ( text As String, count As String , col As Int ) As Panel ' 120dip
+	Private pbase As Panel
+	pbase.Initialize("")
+	
+	Private st() As String
+	st = Regex.Split("-", text )
+	cs.Initialize
+	cs.Size(35).Color(col).Typeface(Typeface.DEFAULT_BOLD).Append(count).Pop.Pop.Pop
+	cs.Size(11).VerticalAlign(1dip).Color(col).Typeface(mm).Append(CRLF & st(0)).Pop.Pop.Pop.Size(10).Typeface(con).Color(textColorSecondary).Append(CRLF & st(1)).PopAll
+	
+	Private lbl As Label
+	lbl.Initialize("")
+	lbl.Text = cs
+	lbl.Gravity = Gravity.CENTER
+	pbase.AddView( lbl, 0, 0, 100%x, 120dip )
+	
+	Private pdiv As Panel
+	pdiv.Initialize("")
+	pdiv.Color = Colors.ARGB(50, 0,0,0)
+	pbase.AddView( pdiv, 20dip, 120dip -1, 100%x - 40dip,  1)
+	
+	Return pbase
+End Sub
+
+Sub gbdivider As Panel
+	Private pbase As Panel
+	pbase.Initialize("")
+	pbase.Color =0xfffcfcfd
+	Return pbase
+End Sub
+
+Public Sub gbExtraItem ( text As String, count As String, col As Int ) As Panel '60dip
+	Private pbase As Panel
+	pbase.Initialize("")
+	pbase.Color = 0xfffcfcfd
+	
+	Private p As Panel
+	p.Initialize("")
+	Private c As ColorDrawable
+	c.Initialize(0xff1a223a, 5dip )
+	p.Background = c
+	p.Elevation = 1dip
+	pbase.AddView ( p, 20dip , 5dip, 100%x - 40dip, 50dip )
+	
+	
+	Private lbl,lbl2 As Label
+	lbl.Initialize("")
+	lbl.Text = text
+	lbl.Typeface = mm
+	lbl.TextColor = Colors.White
+	lbl.TextSize = 10
+	lbl.Gravity =Gravity.LEFT + Gravity.CENTER_VERTICAL
+	lbl.Padding = Array As Int ( 20dip, 0, 0, 0dip )
+	p.AddView( lbl, 0, 0, p.Width - 100dip, 50dip )
+	
+	lbl2.Initialize("")
+	lbl2.Text = count
+	lbl2.Typeface = Typeface.DEFAULT_BOLD
+	lbl2.TextColor = col
+	lbl2.TextSize = 13
+	lbl2.Gravity =Gravity.RIGHT + Gravity.CENTER_VERTICAL
+	lbl2.Padding = Array As Int ( 0, 0, 20dip, 0)
+	p.AddView( lbl2, p.Width - 150dip, 0dip, 150dip, 50dip )
+	
+	
+	Return pbase
+End Sub
+
+Sub gbTimeItem ( time As String ) As Panel ' 30dip
+	Private pbase As Panel
+	pbase.Initialize("")
+	
+	Private lbl As Label
+	lbl.Initialize("")
+	lbl.Text = time
+	lbl.Gravity =Gravity.BOTTOM + Gravity.CENTER_HORIZONTAL
+	lbl.Typeface = con
+	lbl.TextSize = 10
+	lbl.TextColor = textColorSecondary
+	pbase.AddView(lbl, 0, 0, 100%x, 30dip )
+	
+	Return pbase
+End Sub
+
+Sub addExtraItemToGB ( l As List )
+	If l.Size = 2 Then
+		clvGB.Add(gbExtraItem("တစ်ရက်အတွင်းထပ်တိုး ကူးစက်သူ","+" & l.Get(0), 0xffffa232), 60dip, 1)
+		clvGB.Add(gbExtraItem("တစ်ရက်အတွင်းထပ်တိုး သေဆုံးသူ", "+" &  l.Get(1), 0xffff5570), 60dip , 1)
+	End If
+End Sub
+
+#End Region
+
+
+#Region ■■■ Update Region ■■■ 
+Sub checkUpdate
+	
+	Dim j As HttpJob
+	j.Initialize("j", Me)
+	j.Download("https://covid19.joymogok.com/update")
+	Wait For (j) JobDone ( j As HttpJob )
+	If j.Success Then
+		Dim res As String = j.GetString
+		If res.Contains("version") Then
+			Dim parser As JSONParser
+			parser.Initialize(res)
+			Dim root As Map = parser.NextObject
+			Dim other As String = root.Get("other")
+			Dim mediafire As String = root.Get("mediafire")
+			'Dim whatnews As String = root.Get("whatnews")
+			Dim direct As String = root.Get("direct")
+			Dim google As String = root.Get("google")
+			Dim version As String = root.Get("version")
+			Dim close As String = root.Get("close")
+						
+			If close  <> "0" Then
+				cs.Initialize
+				cs.Size(11).Typeface(mm).Append("ယခု ဗားရှင်းကို အသုံးပြု၍ မရတော့ပါ။ နောက်ဆုံးထွက်ဗားရှင်းကိုဒေါင်းလုပ်ဆွဲပြီးအသုံးပြုပေးပါ။").PopAll
+				Msgbox2Async( cs, "", "Download and Install", "", "", Null, False)
+				Wait For Msgbox_Result (Result As Int)
+				If Result = DialogResponse.POSITIVE Then
+					Dim p As PhoneIntents
+					StartActivity(p.OpenBrowser("https://covid19.joymogok.com/apk/covidmm.apk"))
+					Activity.Finish
+				End If
+			End If
+			
+			If version <> banbei Then
+		
+				Dim m As List
+				m.Initialize
+				m.Add(direct)
+				m.Add(mediafire)
+				m.Add(google)
+				m.Add(other)
+				Dim l As List
+				l.Initialize
+				l.Add("Direct Download")
+				l.Add("Mediafire")
+				l.Add("Google Drive")
+				l.Add("Other")
+				cs.Initialize
+				cs.Size(11).Typeface(mm).Append("ဗားရှင်းအသစ်ထွက်ပါပြီ။" & CRLF & "ဗားရှင်းအသစ်ကို Download and Install လုပ်ပြီး ပြန်လည် အသုံးပြုပေးပါ။").PopAll
+				Msgbox2Async( cs, "Update", "Download", "", "", Null, False) 
+				Wait For Msgbox_Result (Result As Int)
+				If Result = DialogResponse.POSITIVE Then
+					Dim p As PhoneIntents
+					StartActivity(p.OpenBrowser(m.Get(0)))
+					Activity.Finish
+				End If				
+			End If
+		End If
+		
+	Else
+		
+	End If
+
+End Sub
+#End Region
